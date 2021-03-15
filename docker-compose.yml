@@ -33,6 +33,8 @@ services:
     image: "deepset/elasticsearch-game-of-thrones"
     ports:
       - 9200:9200
+    volumes:
+      - "elasticsearch-data:/usr/share/elasticsearch/data"
     environment:
       - discovery.type=single-node
   ui:
@@ -41,3 +43,6 @@ services:
       - 8501:8501
     environment:
       - API_ENDPOINT=http://haystack-api:8000
+
+volumes:
+  elasticsearch-data:
